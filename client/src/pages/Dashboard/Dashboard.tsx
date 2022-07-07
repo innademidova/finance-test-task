@@ -90,12 +90,19 @@ const Dashboard = () => {
 								<StyledTableCell align='center'>{item.price}</StyledTableCell>
 								<StyledTableCell
 									sx={{
-										color: item.isIncrease ? '#137333' : 'red',
+										color:
+											item.marketStatus == 'up'
+												? '#137333'
+												: item.marketStatus == 'down'
+												? 'red'
+												: 'black',
 										fontWeight: 'bold',
 									}}
 									align='center'
 								>
-									{item.isIncrease ? '+' : '-'}
+									{item.marketStatus == 'up'
+										? '+'
+										: item.marketStatus == 'down' && '-'}
 									{item.change}
 								</StyledTableCell>
 								<StyledTableCell
@@ -106,12 +113,24 @@ const Dashboard = () => {
 										padding: '0 8px',
 										borderRadius: '8px',
 										width: 'min-content',
-										color: item.isIncrease ? '#137333' : '#a50e0e',
-										background: item.isIncrease ? '#e6f4ea' : '#fce8e6',
+										color:
+											item.marketStatus == 'up'
+												? '#13733'
+												: item.marketStatus == 'down'
+												? '#a50e0e'
+												: 'black',
+										background:
+											item.marketStatus == 'up'
+												? '#e6f4ea'
+												: item.marketStatus == 'down'
+												? '#fce8e6'
+												: 'gray',
 									}}
 									align='center'
 								>
-									{item.isIncrease ? '🠕' : '🠗'}
+									{item.marketStatus == 'up'
+										? '🠕'
+										: item.marketStatus == 'down' && '🠗'}
 									{item.change_percent}%
 								</StyledTableCell>
 								<StyledTableCell align='center'>

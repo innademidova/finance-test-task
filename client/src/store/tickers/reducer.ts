@@ -8,7 +8,7 @@ import { Ticker, TickerViewModel } from '../../common/models/ticker';
 import { TickersState } from '../../common/models/store';
 import { getTickersName } from '../../common/helpers/getTickersName';
 
-type TickersAction = {
+export type TickersAction = {
 	type: string;
 	tickers: Ticker[];
 	ticker: string;
@@ -36,17 +36,24 @@ const tickersReducer = (state = initialState, action: TickersAction) => {
 				const name = getTickersName(item.ticker);
 
 				if (!ticker) {
-					return { ...item, name, isIncrease: false };
+					return { ...item, name, marketStatus: 'noChange' };
 				}
 				if (ticker.disabled) {
 					return ticker;
 				}
 
-				const isIncreased = Number(item.price) > Number(ticker.price);
+				const previousPrice = Number(ticker.price);
+				const currentPrice = Number(item.price);
+
 				return {
 					...item,
 					name,
-					isIncrease: isIncreased,
+					marketStatus:
+						currentPrice > previousPrice
+							? 'up'
+							: currentPrice < previousPrice
+							? 'down'
+							: 'noChange',
 					disabled: ticker.disabled,
 				} as TickerViewModel;
 			});

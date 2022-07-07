@@ -10,7 +10,7 @@ export interface Ticker {
 }
 
 export interface TickerViewModel extends Ticker {
-	isIncrease: boolean;
+	marketStatus: 'up' | 'down' | 'noChange';
 	name: string;
 	disabled?: boolean;
 }
