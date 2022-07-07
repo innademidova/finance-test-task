@@ -1,0 +1,4 @@
+export const SET_RAW_TICKERS = 'SET_RAW_TICKERS';
+export const SYNC_TICKERS = 'SYNC_TICKERS';
+export const TOGGLE_CHECKED = 'TOGGLE_CHECKED';
+export const UPDATE_INTERVAL = 'UPDATE_INTERVAL';
