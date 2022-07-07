@@ -1,15 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { combineReducers } from 'redux'
-import tickersReducer from './tickers/reducer'
-
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+import tickersReducer from './tickers/reducer';
 
 const reducers = combineReducers({
-  tickers: tickersReducer,
-})
+	tickers: tickersReducer,
+});
 
 const store = configureStore({
-  reducer: reducers,
-})
+	reducer: reducers,
+});
 export default store;
 
 export type RootState = ReturnType<typeof store.getState>;

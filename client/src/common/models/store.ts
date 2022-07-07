@@ -1,11 +1,11 @@
-import { Ticker, TickerViewModel } from './ticker'
+import { Ticker, TickerViewModel } from './ticker';
 
 export interface State {
-  tickers: TickersState;
+	tickers: TickersState;
 }
 
 export interface TickersState {
-  tickers: TickerViewModel[];
-  rawTickers: Ticker[];
-  updateInterval: number;
+	tickers: TickerViewModel[];
+	rawTickers: Ticker[];
+	updateInterval: number;
 }
